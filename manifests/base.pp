@@ -1,7 +1,7 @@
 class couchdb::base {
 
   package {'couchdb':
-    ensure => present,
+    ensure => $couchdb::ensure,
   }
 
   service {'couchdb':

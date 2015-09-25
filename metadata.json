@@ -1,12 +1,12 @@
 {
-  "name": "camptocamp-couchdb",
-  "version": "1.0.10",
-  "author": "Camptocamp",
-  "summary": "Puppet Couchdb module",
+  "name": "cgalvarez-couchdb",
+  "version": "1.0.0",
+  "author": "Carlos García Álvarez",
+  "summary": "Puppet CouchDB module",
   "license": "Apache-2.0",
-  "source": "https://github.com/camptocamp/puppet-couchdb",
-  "project_page": "https://github.com/camptocamp/puppet-couchdb",
-  "issues_url": "https://github.com/camptocamp/puppet-couchdb/issues",
+  "source": "https://github.com/cgalvarez/puppet-couchdb",
+  "project_page": "https://github.com/cgalvarez/puppet-couchdb",
+  "issues_url": "https://github.com/cgalvarez/puppet-couchdb/issues",
   "dependencies": [
     {
       "name": "camptocamp/selinux",
@@ -19,6 +19,10 @@
     {
       "name": "puppetlabs/stdlib",
       "version_requirement": ">=3.2.0 <5.0.0"
+    },
+    {
+      "name": "puppetlabs/apt",
+      "version_requirement": ">=2.0.0"
     }
   ],
   "requirements": [

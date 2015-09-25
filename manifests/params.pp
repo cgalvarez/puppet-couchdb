@@ -11,5 +11,7 @@ class couchdb::params {
   }
 
   $backupdir = '/var/backups/couchdb'
+  $ensure    = 'present'
+  $version   = undef
 
 }
