@@ -19,4 +19,5 @@ Copyright
 =======================
 
 Copyright (C) 2015 [Carlos García Álvarez](http://carlosgarcia.engineer/)
+
 Copyright (C) 2015 [Camptocamp](http://www.camptocamp.com/) [Initial fork of [camptocamp/puppet-couchdb](https://github.com/camptocamp/puppet-couchdb) v1.1.0
