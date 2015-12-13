@@ -1,4 +1,4 @@
-Puppet Couchdb module
+Puppet CouchDB module
 =======================
 
 This module is a fork of [camptocamp/couchdb](https://github.com/camptocamp/puppet-couchdb) by Carlos García Álvarez.
