@@ -19,7 +19,7 @@ class couchdb::debian {
     before        => Package['couchdb'],
   }
 
-  apt::pin { 'pin_couchdb':
+  $pin_defs = {
     packages => 'couchdb',
     ensure   => $couchdb::ensure ? {
       /(absent|purged|latest)/              => 'absent',
@@ -32,18 +32,25 @@ class couchdb::debian {
     },
     before   => Package['couchdb'],
   }
-  
-  if $couchdb::ensure != 'held' {
+  $rm_pin = $couchdb::ensure != 'held' and $couchdb::version
+  $pin_extra = $rm_pin ? {
+    true    => { notify => Exec['unhold_couchdb'] },
+    default => {},
+  }
+  create_resources(apt::pin, { 'pin_couchdb' => $pin_extra }, $pin_defs)
+
+  if $rm_pin {
     # More info:
     # - http://www.astarix.co.uk/2014/02/easily-exclude-packages-apt-get-upgrades/
     # - https://docs.puppetlabs.com/puppet/latest/reference/upgrade_minor.html
     exec { 'unhold_couchdb':
-      path      => ['/bin', '/sbin', '/usr/bin', '/usr/sbin', '/usr/local/bin'],
-      logoutput => 'on_failure',
-      command   => 'apt-mark unhold couchdb',
-      user      => 'root',
-      before    => Package['couchdb'],
-      require   => Apt::Pin['pin_couchdb'],
+      path        => ['/bin', '/sbin', '/usr/bin', '/usr/sbin', '/usr/local/bin'],
+      logoutput   => 'on_failure',
+      command     => 'apt-mark unhold couchdb',
+      user        => 'root',
+      before      => Package['couchdb'],
+      require     => Apt::Pin['pin_couchdb'],
+      refreshonly => true,
     }
   }
 
