@@ -17,6 +17,7 @@ class couchdb::debian {
       server      => 'keyserver.ubuntu.com',
     },
     before        => Package['couchdb'],
+    notify        => Exec['apt_update'],
   }
 
   $pin_defs = {
