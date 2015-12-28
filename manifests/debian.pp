@@ -19,6 +19,10 @@ class couchdb::debian {
     before        => Package['couchdb'],
     notify        => Exec['apt_update'],
   }
+  
+  if defined(Exec['apt_update']) {
+    Exec['apt_update'] -> Package['couchdb']
+  }
 
   $pin_defs = {
     packages => 'couchdb',
